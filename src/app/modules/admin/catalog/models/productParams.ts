@@ -1,8 +1,7 @@
 import { PaginatedFilter } from 'src/app/core/models/Filters/PaginatedFilter';
 
 export class ProductParams implements PaginatedFilter {
-  searchString: string;
-  brandId: number;
+  keyword: string;
   categoryId: number;
   pageNumber: number;
   pageSize: number;

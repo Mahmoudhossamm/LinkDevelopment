@@ -14,7 +14,11 @@ export class CategoryFormComponent implements OnInit {
   categoryForm: FormGroup;
   formTitle: string;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: Category, private categoryService: CategoryService, private toastr: ToastrService, private fb: FormBuilder) {
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: Category, 
+    private categoryService: CategoryService, 
+    private toastr: ToastrService, 
+    private fb: FormBuilder) {
   }
 
   ngOnInit(): void {
@@ -25,7 +29,7 @@ export class CategoryFormComponent implements OnInit {
     this.categoryForm = this.fb.group({
       id: [this.data && this.data.id],
       name: [this.data && this.data.name, Validators.required],
-      detail: [this.data && this.data.detail, Validators.required]
+      description: [this.data && this.data.description, Validators.required]
     });
     if (this.categoryForm.get('id').value === '' || this.categoryForm.get('id').value == null) {
       this.formTitle = 'Register Category';
@@ -38,11 +42,11 @@ export class CategoryFormComponent implements OnInit {
     if (this.categoryForm.valid) {
       if (this.categoryForm.get('id').value === '' || this.categoryForm.get('id').value == null) {
         this.categoryService.createCategory(this.categoryForm.value).subscribe(response => {
-          this.toastr.success(response.messages[0]);
+          this.toastr.success("Category created successfully");
         });
       } else {
         this.categoryService.updateCategory(this.categoryForm.value).subscribe(response => {
-          this.toastr.success(response.messages[0]);
+          this.toastr.success("Category updated successfully");
         });
       }
     }

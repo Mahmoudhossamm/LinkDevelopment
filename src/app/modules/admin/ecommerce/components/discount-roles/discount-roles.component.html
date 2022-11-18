@@ -1,0 +1,8 @@
+<div [hidden]="!discountRules">
+    <app-table [title]="'discountRules'" [subtitle]="'Manage, Register, Update or Remove discountRules here.'"
+        [data]="discountRules && discountRules.data" [columns]="DiscountRulesColumns" (onFilter)="filter($event)"
+        (onReload)="reload()" (onCreateForm)="openForm($event)" (onEditForm)="openForm($event)" (onSort)="sort($event)"
+        (onDelete)="remove($event)" [totalCount]="discountRules && discountRules.totalCount" [pageSize]="discountRules && discountRules.pageSize"
+        (onPageChanged)="pageChanged($event)">
+    </app-table>
+</div>

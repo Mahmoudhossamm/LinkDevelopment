@@ -10,7 +10,6 @@ import { BrandParams } from '../../../models/brandParams';
 import { Category } from '../../../models/category';
 import { CategoryParams } from '../../../models/categoryParams';
 import {Product} from '../../../models/product';
-import { BrandService } from '../../../services/brand.service';
 import { CategoryService } from '../../../services/category.service';
 import {ProductService} from '../../../services/product.service';
 
@@ -22,42 +21,37 @@ import {ProductService} from '../../../services/product.service';
 export class ProductFormComponent implements OnInit {
   productForm: FormGroup;
   formTitle: string;
-  brands: PaginatedResult<Brand>;
-  brandParams = new BrandParams();
   categories: PaginatedResult<Category>;
   categoryParams = new CategoryParams();
 
   url: any = [];
   upload = new Upload();
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: Product, private productService: ProductService, private brandService: BrandService, private categoryService: CategoryService,
-        private toastr: ToastrService, private fb: FormBuilder) {
+  constructor(@Inject(MAT_DIALOG_DATA) 
+  public data: Product, 
+  private productService: ProductService, 
+  private categoryService: CategoryService,
+  private toastr: ToastrService, 
+  private fb: FormBuilder) {
   }
 
   ngOnInit(): void {
     this.initializeForm();
-    this.brandParams.pageSize = 50;
-    this.categoryParams.pageSize = 50;
-    this.getBrands();
+    this.categoryParams.pageSize = 5;
+    //this.getBrands();
     this.getCategories();
-    this.loadProductImage();
+   // this.loadProductImage();
   }
 
   initializeForm() {
     this.productForm = this.fb.group({
       id: [this.data && this.data.id],
       name: [this.data && this.data.name, Validators.required],
-      brandId: [this.data && this.data.brandId, Validators.required], // todo get brands and show dropdown to select brand instead of hidden input
-      categoryId: [this.data && this.data.categoryId, Validators.required], // todo get categories and show dropdown list to select category
-      localeName: [this.data && this.data.localeName, Validators.required],
+      description: [this.data && this.data.description, Validators.required], // todo get categories and show dropdown list to select category
+      categoryId: [this.data && this.data.categoryId, Validators.required],
       price: [this.data && this.data.price, Validators.required],
-      cost: [this.data && this.data.cost, Validators.required],
-      tax: [this.data && this.data.tax , Validators.required],
-      taxMethod: [this.data && this.data.taxMethod, Validators.required],
-      barcodeSymbology: [this.data && this.data.barcodeSymbology, Validators.required],
-      isAlert: [!!(this.data && this.data.isAlert), Validators.required],
-      alertQuantity: [this.data && this.data.alertQuantity, Validators.required],
-      detail: [this.data && this.data.detail, Validators.required]
+      quantity: [this.data && this.data.quantity, Validators.required],
+    
     });
     if (this.productForm.get('id').value === '' || this.productForm.get('id').value == null) {
       this.formTitle = 'Register Product';
@@ -66,33 +60,23 @@ export class ProductFormComponent implements OnInit {
     }
   }
 
-  getBrands() {
-    this.brandService.getBrands(this.brandParams).subscribe((response) => { this.brands = response; });
-  }
 
   getCategories() {
     this.categoryService.getCategories(this.categoryParams).subscribe((response) => { this.categories = response; });
   }
 
-  loadProductImage() {
-    this.productService.getProductImageById(this.data.id).subscribe((response) => { this.url = response.data; });
-  }
-
-  onSelectFile($event) {
-    this.upload = $event;
-  }
 
   onSubmit() {
     // TODO after successful update/insert, refresh table view in component product.component.ts
 
     if (this.productForm.valid) {
       if (this.productForm.get('id').value === '' || this.productForm.get('id').value == null) {
-        this.productService.createProduct(this.productForm.value, this.upload).subscribe(response => {
-          this.toastr.success(response.messages[0]);
+        this.productService.createProduct(this.productForm.value).subscribe(response => {
+          this.toastr.success("Product Added Successfully");
         });
       } else {
-        this.productService.updateProduct(this.productForm.value, this.upload).subscribe(response => {
-          this.toastr.success(response.messages[0]);
+        this.productService.updateProduct(this.productForm.value).subscribe(response => {
+          this.toastr.success("Product Updated Successfully");
         });
       }
     }

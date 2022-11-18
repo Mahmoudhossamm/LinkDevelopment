@@ -11,6 +11,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { AboutComponent } from './about/about.component';
 import { EventLogsComponent } from './event-logs/event-logs.component';
+import { EcommerceModule } from './ecommerce/ecommerce.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { EventLogsComponent } from './event-logs/event-logs.component';
     LogoutDialogComponent,
     SettingsComponent,
     AboutComponent,
-    EventLogsComponent
+    EventLogsComponent,
   ],
   imports: [
     CommonModule,
@@ -27,6 +28,7 @@ import { EventLogsComponent } from './event-logs/event-logs.component';
     MaterialModule,
     SharedModule,
     CatalogModule,
+    EcommerceModule,
     TranslateModule
   ]
 })

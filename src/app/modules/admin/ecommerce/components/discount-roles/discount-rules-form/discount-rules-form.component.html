@@ -1,0 +1,65 @@
+<div *ngIf="!this.products" class="d-flex justify-center p-4">
+    <mat-icon>
+      <mat-spinner diameter="20">
+      </mat-spinner>
+    </mat-icon> Loading ...
+  </div>
+  <div *ngIf="this.products">
+    <h2 mat-dialog-title>{{formTitle}}</h2>
+    <form (ngSubmit)="onSubmit()" [formGroup]="discountRulesForm">
+      <mat-dialog-content class="mat-typography">
+        <div class="row">
+          <input formControlName="id" type="hidden">
+   
+          <div class="col-xs-12 col-md-12">
+    <div class="row">
+      <div class="col-xs-12 col-md-6">
+        <mat-form-field>
+          <mat-label>Name</mat-label>
+          <input autocomplete="off" formControlName="name" matInput placeholder="Name" required>
+          <mat-error>Please provide a valid name</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-xs-12 col-md-6">
+        <mat-form-field  *ngIf="products && products.data">
+          <mat-select placeholder="Select product" [(value)]="data && data.productId" formControlName="productId">
+            <mat-option *ngFor="let product of products.data" [value]="product.id">
+              {{ product.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-xs-12 col-md-6">
+        <mat-form-field>
+          <mat-label>Quantity</mat-label>
+          <input autocomplete="off" formControlName="quantity" matInput placeholder="quantity" required type="number">
+          <mat-error>Please provide a Price</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-xs-12 col-md-6">
+        <mat-form-field>
+          <mat-label>Percentage</mat-label>
+          <input autocomplete="off" formControlName="percentage" matInput placeholder="percentage" required type="number">
+          <mat-error>Please provide a valid quantity</mat-error>
+        </mat-form-field>
+      </div>
+  
+  
+
+ 
+  
+    </div>
+          </div>
+  
+        </div>
+  
+      </mat-dialog-content>
+      <mat-dialog-actions align="end">
+        <button mat-dialog-close mat-raised-button>Cancel</button>
+        <button [disabled]="!discountRulesForm.dirty || !discountRulesForm.valid" [mat-dialog-close]="true" cdkFocusInitial color="primary"
+                mat-raised-button type="submit">Save
+        </button>
+      </mat-dialog-actions>
+    </form>
+  </div>
+  

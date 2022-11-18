@@ -26,6 +26,7 @@ import { PermissionGuard } from './core/guards/permission.guard';
 import { RoleGuard } from './core/guards/role.guard';
 import { DatePipe } from '@angular/common';
 import { CustomerService } from './modules/admin/people/services/customer.service';
+import { EcommerceRoutingModule } from './modules/admin/ecommerce/ecommerce-routing.module';
 
 export function rootLoaderFactory(http: HttpClient)
 {
@@ -47,6 +48,7 @@ export function rootLoaderFactory(http: HttpClient)
     SharedModule,
     HttpClientModule,
     CatalogRoutingModule,
+    EcommerceRoutingModule,
     TranslateModule.forRoot({
       loader:{
         provide:TranslateLoader,

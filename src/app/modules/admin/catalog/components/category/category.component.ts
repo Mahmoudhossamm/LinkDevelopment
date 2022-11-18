@@ -32,10 +32,9 @@ export class CategoryComponent implements OnInit {
     this.initColumns();
   }
 
+
   getCategorys(): void {
-    this.categoryService
-      .getCategories(this.categoryParams)
-      .subscribe((result) => {
+    this.categoryService.getCategories(this.categoryParams).subscribe((result) => {
         this.categories = result;
       });
   }
@@ -44,7 +43,7 @@ export class CategoryComponent implements OnInit {
     this.categoryColumns = [
       { name: 'Id', dataKey: 'id', isSortable: true, isShowable: true },
       { name: 'Name', dataKey: 'name', isSortable: true, isShowable: true },
-      { name: 'Detail', dataKey: 'detail', isSortable: true, isShowable: true },
+      { name: 'description', dataKey: 'description', isSortable: true, isShowable: true },
       { name: 'Action', dataKey: 'action', position: 'right' },
     ];
   }
@@ -79,15 +78,16 @@ export class CategoryComponent implements OnInit {
     this.getCategorys();
   }
 
+
   filter($event: string): void {
-    this.categoryParams.searchString = $event.trim().toLocaleLowerCase();
+    this.categoryParams.keyword = $event.trim().toLocaleLowerCase();
     this.categoryParams.pageNumber = 0;
     this.categoryParams.pageSize = 0;
     this.getCategorys();
   }
 
   reload(): void {
-    this.categoryParams.searchString = '';
+    this.categoryParams.keyword = '';
     this.categoryParams.pageNumber = 0;
     this.categoryParams.pageSize = 0;
     this.getCategorys();

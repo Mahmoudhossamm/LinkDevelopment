@@ -12,30 +12,35 @@ import { map } from 'rxjs/operators';
 export class CategoryService {
   constructor(private api: CategoryApiService) {}
 
-  getCategories(
-    categoryParams: CategoryParams
-  ): Observable<PaginatedResult<Category>> {
-    let params = new HttpParams();
-    if (categoryParams.searchString) {
-      params = params.append('searchString', categoryParams.searchString);
-    }
-    if (categoryParams.pageNumber) {
-      params = params.append(
-        'pageNumber',
-        categoryParams.pageNumber.toString()
-      );
-    }
-    if (categoryParams.pageSize) {
-      params = params.append('pageSize', categoryParams.pageSize.toString());
-    }
-    if (categoryParams.orderBy) {
-      params = params.append('orderBy', categoryParams.orderBy.toString());
-    }
+  // getCategories(
+  //   categoryParams: CategoryParams
+  // ): Observable<PaginatedResult<Category>> {
+  //   let params = new HttpParams();
+  //   if (categoryParams.searchString) {
+  //     params = params.append('searchString', categoryParams.searchString);
+  //   }
+  //   if (categoryParams.pageNumber) {
+  //     params = params.append(
+  //       'pageNumber',
+  //       categoryParams.pageNumber.toString()
+  //     );
+  //   }
+  //   if (categoryParams.pageSize) {
+  //     params = params.append('pageSize', categoryParams.pageSize.toString());
+  //   }
+  //   if (categoryParams.orderBy) {
+  //     params = params.append('orderBy', categoryParams.orderBy.toString());
+  //   }
+  //   return this.api
+  //     .getAlls(params)
+  //     .pipe(map((response: PaginatedResult<Category>) => response));
+  // }
+
+  getCategories(categoryParams: CategoryParams): Observable<PaginatedResult<Category>> {
     return this.api
-      .getAlls(params)
+      .getAlls(categoryParams)
       .pipe(map((response: PaginatedResult<Category>) => response));
   }
-
   getCategoryById(id: string): Observable<Category> {
     return this.api.getById(id).pipe(map((response: Category) => response));
   }

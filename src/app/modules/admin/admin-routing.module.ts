@@ -9,6 +9,7 @@ import { AboutComponent } from './about/about.component';
 import { IdentityComponent } from './identity/identity.component';
 import { PermissionGuard } from 'src/app/core/guards/permission.guard';
 import { EventLogsComponent } from './event-logs/event-logs.component';
+import { EcommerceComponent } from './ecommerce/ecommerce.component';
 
 const routes: Routes = [
   {
@@ -38,6 +39,12 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     component: CatalogComponent,
     loadChildren: () => import('./catalog/catalog.module').then(mod => mod.CatalogModule),
+  },
+  {
+    path: 'ecommerce',
+    canActivate: [AuthGuard],
+    component: EcommerceComponent,
+    loadChildren: () => import('./ecommerce/ecommerce.module').then(mod => mod.EcommerceModule),
   },
   {
     path: 'event-logs',

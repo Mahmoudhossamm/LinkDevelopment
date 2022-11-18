@@ -1,19 +1,20 @@
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import { Product } from 'src/app/modules/admin/catalog/models/product';
+import { ProductParams } from 'src/app/modules/admin/catalog/models/productParams';
 import {environment} from 'src/environments/environment';
 import { Result } from '../../models/wrappers/Result';
 
 @Injectable()
 export class ProductApiService {
 
-  baseUrl = environment.apiUrl + 'catalog/products/';
+  baseUrl = environment.apiUrl + 'v1/products/';
 
   constructor(private http: HttpClient) {
   }
 
-  getAlls(params: HttpParams) {
-    return this.http.get(this.baseUrl, {params: params});
+  getAlls(params: ProductParams) {
+    return this.http.post(this.baseUrl + 'search', params);
   }
 
   getById(id: string) {
@@ -29,9 +30,10 @@ export class ProductApiService {
   }
 
   update(product: Product) {
-    return this.http.put(this.baseUrl, product);
+    return this.http.put(this.baseUrl + product.id, product);
   }
 
+ 
   delete(id: string) {
     return this.http.delete(this.baseUrl + id);
   }

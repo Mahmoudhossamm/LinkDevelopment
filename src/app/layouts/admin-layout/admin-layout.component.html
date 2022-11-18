@@ -14,10 +14,32 @@
         </a>
         <div class="nav-subheading">
           {{'layouts.admin.catalogSubhead'|translate}}</div>
-        <a *appHasPermission='["Permissions.Brands.Search"]' mat-list-item routerLink="catalog/brands"
+        <!-- <a  mat-list-item routerLink="catalog/brands"
           (click)="sidenav.close()">
-          <mat-icon style="padding-right: 10px;">inventory</mat-icon> {{'layouts.admin.brands'|translate}}
-        </a>
+          <mat-icon style="padding-right: 10px;">inventory</mat-icon> Brands
+        </a> -->
+
+        <a  mat-list-item routerLink="catalog/categories"
+        (click)="sidenav.close()">
+        <mat-icon style="padding-right: 10px;">inventory</mat-icon> Category
+      </a>
+
+        <a  mat-list-item routerLink="catalog/products"
+        (click)="sidenav.close()">
+        <mat-icon style="padding-right: 10px;">inventory</mat-icon> Products
+      </a>
+
+      <a  mat-list-item routerLink="ecommerce/discount"
+      (click)="sidenav.close()">
+      <mat-icon style="padding-right: 10px;">inventory</mat-icon> Discount Roles
+    </a>
+
+    <a  mat-list-item routerLink="ecommerce/orders"
+      (click)="sidenav.close()">
+      <mat-icon style="padding-right: 10px;">inventory</mat-icon> Orders
+    </a>
+
+
       </div>
     </mat-nav-list>
   </mat-sidenav>
@@ -27,16 +49,7 @@
   </div>
   <div class="content">
     <div class="container">
-      <mat-card *ngIf="alertIsVisible" class="module-card">
-        <mat-card-content>
-          <div class="row" style="align-items: center;">
-            <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6"><a mat-raised-button color="primary"
-                href="https://www.buymeacoffee.com/codewithmukesh" target="_blank"> Support fullstackhero</a></div>
-            <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6" style="text-align: right;"> <button mat-button
-                color="accent" (click)="hideAlert()">Hide Alert</button></div>
-          </div>
-        </mat-card-content>
-      </mat-card>
+
       <router-outlet></router-outlet>
     </div>
   </div>

@@ -30,10 +30,12 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
     this.getProducts();
     this.initColumns();
+    this.productParams.pageSize = 5;
   }
 
   getProducts(): void {
-    this.productService.getProducts(this.productParams).subscribe((result) => {
+
+    this.productService.getAllProducts(this.productParams).subscribe((result) => {
       this.products = result;
     });
   }
@@ -42,16 +44,11 @@ export class ProductComponent implements OnInit {
     this.productColumns = [
       //{ name: 'Id', dataKey: 'id', isSortable: true, isShowable: true },
       { name: 'Name', dataKey: 'name', isSortable: true, isShowable: true },
-      { name: 'LocaleName', dataKey: 'localeName', isSortable: true, isShowable: true },
-      { name: 'BrandName', dataKey: 'brandName', isSortable: true, isShowable: true },
       { name: 'CategoryName', dataKey: 'categoryName', isSortable: true, isShowable: true },
-      { name: 'Detail', dataKey: 'detail', isSortable: true, isShowable: true },
+      { name: 'Description', dataKey: 'description', isSortable: true, isShowable: true },
       { name: 'Price', dataKey: 'price', isSortable: true, isShowable: true },
-      { name: 'Cost', dataKey: 'cost', isSortable: true, isShowable: true },
-      { name: 'Tax', dataKey: 'tax', isSortable: true , isShowable: true},
-      { name: 'TaxMethod', dataKey: 'taxMethod', isSortable: false , isShowable: false},
-      //{ name: 'BarcodeSymbology', dataKey: 'barcodeSymbology', isSortable: true, isShowable: true },
-      //{ name: 'IsAlert', dataKey: 'isAlert', isSortable: true, isShowable: true },
+      { name: 'Quantity', dataKey: 'quantity', isSortable: true, isShowable: true },
+      
       { name: 'Action', dataKey: 'action', position: 'right' },
     ];
   }
@@ -87,14 +84,14 @@ export class ProductComponent implements OnInit {
   }
 
   filter($event: string): void {
-    this.productParams.searchString = $event.trim().toLocaleLowerCase();
+    this.productParams.keyword = $event.trim().toLocaleLowerCase();
     this.productParams.pageNumber = 0;
     this.productParams.pageSize = 0;
     this.getProducts();
   }
 
   reload(): void {
-    this.productParams.searchString = '';
+    this.productParams.keyword = '';
     this.productParams.pageNumber = 0;
     this.productParams.pageSize = 0;
     this.getProducts();

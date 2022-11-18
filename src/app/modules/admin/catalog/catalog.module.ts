@@ -33,7 +33,7 @@ import {ProductService} from './services/product.service';
     SharedModule
   ],
   providers: [
-    BrandService, CategoryService, ProductService
+    CategoryService, ProductService
   ]
 })
 export class CatalogModule {
