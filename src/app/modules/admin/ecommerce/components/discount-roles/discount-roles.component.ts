@@ -28,11 +28,14 @@ export class DiscountRolesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.DiscountRulesParams.pageSize = 5;
     this.getdiscountRules();
     this.initColumns();
+    
   }
 
   getdiscountRules(): void {
+    
     this.discountRuleservice.getDiscountRules(this.DiscountRulesParams).subscribe((result) => {
       this.discountRules = result;
       console.log(result);
@@ -51,7 +54,7 @@ export class DiscountRolesComponent implements OnInit {
   }
 
   pageChanged(event: PaginatedFilter): void {
-    this.DiscountRulesParams.pageNumber = event.pageNumber;
+    this.DiscountRulesParams.pageSize = event.pageNumber;
     this.DiscountRulesParams.pageSize = event.pageSize;
     this.getdiscountRules();
   }

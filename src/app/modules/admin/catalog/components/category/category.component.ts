@@ -28,6 +28,7 @@ export class CategoryComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.categoryParams.pageSize = 5;
     this.getCategorys();
     this.initColumns();
   }

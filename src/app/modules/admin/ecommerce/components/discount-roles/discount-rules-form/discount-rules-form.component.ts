@@ -39,7 +39,7 @@ export class DiscountRulesFormComponent implements OnInit {
     this.discountRulesForm = this.fb.group({
       id: [this.data && this.data.id],
       name: [this.data && this.data.name, Validators.required],
-      productId: [this.data && this.data.productId, Validators.required],
+      productId: [this.data && this.data.productId],
       percentage: [this.data && this.data.percentage, Validators.required],
       quantity: [this.data && this.data.quantity, Validators.required],
     

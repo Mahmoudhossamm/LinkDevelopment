@@ -28,9 +28,10 @@ export class ProductComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.productParams.pageSize = 5;
     this.getProducts();
     this.initColumns();
-    this.productParams.pageSize = 5;
+   
   }
 
   getProducts(): void {

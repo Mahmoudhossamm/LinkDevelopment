@@ -24,7 +24,7 @@ export class ToolbarComponent implements OnInit {
 
   ngOnInit() {
     let themeVariant = this.localStorageService.getItem('themeVariant');
-    this.darkModeIcon = themeVariant === 'dark-theme' ? 'bedtime' : 'wb_sunny';
+    this.darkModeIcon = themeVariant === 'dark-theme' ?  'wb_sunny' :'bedtime';
     this.isDarkMode = themeVariant === 'dark-theme';
     this.fullName = this.authService.getFullName;
     this.email = this.authService.getEmail;
