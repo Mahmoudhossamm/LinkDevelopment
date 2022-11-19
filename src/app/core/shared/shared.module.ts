@@ -22,6 +22,7 @@ import { IdentityApiService } from '../api/identity/identity-api.service';
 import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.component';
 import { UploaderComponent } from './components/uploader/uploader.component';
 import { DiscountRulesApiService } from '../api/eCommerce/discountRules-api.service';
+import { OrdersApiService } from '../api/eCommerce/orders-api.service';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,7 @@ import { DiscountRulesApiService } from '../api/eCommerce/discountRules-api.serv
     }),
   ],
   providers: [
-    BrandApiService, CategoryApiService, ProductApiService,DiscountRulesApiService,
+    BrandApiService, CategoryApiService, ProductApiService,DiscountRulesApiService,OrdersApiService,
     CustomerApiService,
     IdentityApiService, UserApiService, RoleApiService
   ],

@@ -9,6 +9,7 @@ import { EcommerceRoutingModule } from './ecommerce-routing.module';
 import { DiscountRulesApiService } from 'src/app/core/api/eCommerce/discountRules-api.service';
 import { DiscountRulesService } from './services/discountRules.service';
 import { DiscountRulesFormComponent } from './components/discount-roles/discount-rules-form/discount-rules-form.component';
+import { OrdersService } from './services/orders.service';
 
 
 
@@ -26,7 +27,7 @@ import { DiscountRulesFormComponent } from './components/discount-roles/discount
     EcommerceRoutingModule
   ],
   providers: [
-    DiscountRulesService
+    DiscountRulesService,OrdersService
   ]
   
 })

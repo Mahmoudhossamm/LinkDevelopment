@@ -3,8 +3,8 @@ export interface Orders {
     name: string;
     description: string;
     productId: string;
-    categoryName: string;
+    productName: string;
     price: number;
-    discountPercentage: number;
+    percentage: number;
     quantity: number;
   }
