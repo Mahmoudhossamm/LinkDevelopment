@@ -33,14 +33,15 @@
         <mat-form-field>
           <mat-label>Quantity</mat-label>
           <input autocomplete="off" formControlName="quantity" matInput placeholder="quantity" required type="number">
-          <mat-error>Please provide a Price</mat-error>
+          <mat-error>Please provide a Quantity</mat-error>
         </mat-form-field>
       </div>
       <div class="col-xs-12 col-md-6">
         <mat-form-field>
           <mat-label>Percentage</mat-label>
           <input autocomplete="off" formControlName="percentage" matInput placeholder="percentage" required type="number">
-          <mat-error>Please provide a valid quantity</mat-error>
+          <mat-error *hasError="'required'">Please provide a valid Percentage</mat-error>
+          <mat-error *hasError="'max'">  Max. Percentage is 100</mat-error>
         </mat-form-field>
       </div>
   

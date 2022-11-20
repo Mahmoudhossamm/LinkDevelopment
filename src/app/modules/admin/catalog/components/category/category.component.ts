@@ -42,7 +42,7 @@ export class CategoryComponent implements OnInit {
 
   initColumns(): void {
     this.categoryColumns = [
-      { name: 'Id', dataKey: 'id', isSortable: true, isShowable: true },
+     // { name: 'Id', dataKey: 'id', isSortable: true, isShowable: true },
       { name: 'Name', dataKey: 'name', isSortable: true, isShowable: true },
       { name: 'description', dataKey: 'description', isSortable: true, isShowable: true },
       { name: 'Action', dataKey: 'action', position: 'right' },

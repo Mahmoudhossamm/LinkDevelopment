@@ -68,7 +68,7 @@ export class OrdersComponent implements OnInit {
   remove($event: string): void {
     this.orderservice.deleteOrders($event).subscribe(() => {
       this.getorders();
-      this.toastr.info('DiscountRules Removed');
+      this.toastr.info('Order Removed');
     });
   }
 

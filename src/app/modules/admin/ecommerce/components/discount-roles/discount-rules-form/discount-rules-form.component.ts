@@ -40,7 +40,7 @@ export class DiscountRulesFormComponent implements OnInit {
       id: [this.data && this.data.id],
       name: [this.data && this.data.name, Validators.required],
       productId: [this.data && this.data.productId],
-      percentage: [this.data && this.data.percentage, Validators.required],
+      percentage: [this.data && this.data.percentage,[ Validators.required,Validators.min(1),Validators.max(100)]],
       quantity: [this.data && this.data.quantity, Validators.required],
     
     });
@@ -59,6 +59,7 @@ export class DiscountRulesFormComponent implements OnInit {
 
   onSubmit() {
     // TODO after successful update/insert, refresh table view in component product.component.ts
+
 
     if (this.discountRulesForm.valid) {
       if (this.discountRulesForm.get('id').value === '' || this.discountRulesForm.get('id').value == null) {
