@@ -8,10 +8,8 @@ import { ServerErrorComponent } from './components/server-error/server-error.com
 import { MaterialModule } from '../material/material.module';
 import { TableComponent } from './components/table/table.component';
 import { DataPropertyGetterPipe } from '../pipes/data-property-getter.pipe';
-import { BrandApiService } from '../api/catalog/brand-api.service';
 import { CategoryApiService } from '../api/catalog/category-api.service';
 import { ProductApiService } from '../api/catalog/product-api.service';
-import { CustomerApiService } from '../api/people/customer-api.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { AccessDenialComponent } from './components/access-denial/access-denial.component';
 import { HasPermissionDirective } from '../directives/has-permission.directive';
@@ -49,8 +47,8 @@ import { OrdersApiService } from '../api/eCommerce/orders-api.service';
     }),
   ],
   providers: [
-    BrandApiService, CategoryApiService, ProductApiService,DiscountRulesApiService,OrdersApiService,
-    CustomerApiService,
+   CategoryApiService, ProductApiService,DiscountRulesApiService,OrdersApiService,
+  
     IdentityApiService, UserApiService, RoleApiService
   ],
   exports: [

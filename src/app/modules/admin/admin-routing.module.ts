@@ -4,7 +4,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { SettingsComponent } from './settings/settings.component';
 import { AuthGuard } from '../../core/guards/auth.guard';
 import { CatalogComponent } from './catalog/catalog.component';
-import { PeopleComponent } from './people/people.component';
 import { AboutComponent } from './about/about.component';
 import { IdentityComponent } from './identity/identity.component';
 import { PermissionGuard } from 'src/app/core/guards/permission.guard';
@@ -52,12 +51,7 @@ const routes: Routes = [
     component: EventLogsComponent,
     loadChildren: () => import('./event-logs/event-logs.module').then(mod => mod.ActivityLogsModule),
   },
-  {
-    path: 'people',
-    canActivate: [AuthGuard],
-    component: PeopleComponent,
-    loadChildren: () => import('./people/people.module').then(mod => mod.PeopleModule),
-  }
+
 ];
 
 @NgModule({
